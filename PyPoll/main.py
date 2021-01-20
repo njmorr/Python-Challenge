@@ -31,4 +31,10 @@ with open(csvpath) as csvfile:
     # Severance, C., Andrion, A., Hauser, E., & Blumenberg, S. 
     # (2016). Python for Everybody: Exploring Data in Python 3. Self-Published.
     # Page 109
+
+    # Sum all the votes (keys) in dictionary
+    totalVotes = 0
     
+    for votes in countedVotes.values():
+        totalVotes = totalVotes + int(votes)
+    print(totalVotes)
