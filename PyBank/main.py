@@ -94,12 +94,35 @@ with open(csvpath) as csvfile:
     # print(greastestDecreasePNL)
 
 
-    print(f'Total Months: {sumOfMonth}')
-    print(f'Total: ${total}')
-    averageChange = round(sumOfDelta/countOfChange,2)
-    # Rounding to 2 decimals
-    # https://stackoverflow.com/questions/20457038/how-to-round-to-2-decimals-with-python
-    # accessed 19 Jan 2021    
-    print(f'Average Change: {averageChange}')
-    print(f'Greatest Increase in Profits: {greastestIncreaseMonth} (${greastestIncreasePNL})')
-    print(f'Greatest Decrease in Profits: {greastestDecreaseMonth} (${greastestDecreasePNL})')
+TotalMonths = f'Total Months: {sumOfMonth}'
+
+TotalMonies = f'Total: ${total}'
+averageChange = round(sumOfDelta/countOfChange,2)
+# Rounding to 2 decimals
+# https://stackoverflow.com/questions/20457038/how-to-round-to-2-decimals-with-python
+# accessed 19 Jan 2021    
+CalculatedAverageChange = f'Average Change: {averageChange}'
+GreatestIncrease = f'Greatest Increase in Profits: {greastestIncreaseMonth} (${greastestIncreasePNL})'
+GreatestDecrease = f'Greatest Decrease in Profits: {greastestDecreaseMonth} (${greastestDecreasePNL})'
+
+print(TotalMonths)
+print(TotalMonies)
+print(CalculatedAverageChange)
+print(GreatestIncrease)
+print(GreatestDecrease)
+
+dataSummary = [TotalMonths, TotalMonies, CalculatedAverageChange, GreatestIncrease, GreatestDecrease]
+
+#print(dataSummary)
+
+#create and save the output file
+output_file = os.path.join("analysis", "financial_analysis.csv")
+
+with open(output_file, "w") as datafile:
+    writer = csv.writer(datafile, delimiter='\t')
+    writer.writerows(dataSummary)
+# Use of delimiter parameter
+# https://stackoverflow.com/questions/51100680/python-list-to-csv-file-with-each-item-in-new-line
+# Accessed 19 Jan 2021
+# delimeter = '\t'
+# trial and error with random letters
