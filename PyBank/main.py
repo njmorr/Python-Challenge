@@ -105,6 +105,8 @@ CalculatedAverageChange = f'Average Change: {averageChange}'
 GreatestIncrease = f'Greatest Increase in Profits: {greastestIncreaseMonth} (${greastestIncreasePNL})'
 GreatestDecrease = f'Greatest Decrease in Profits: {greastestDecreaseMonth} (${greastestDecreasePNL})'
 
+print("Financial Analyis")
+print ("---------------------------------")
 print(TotalMonths)
 print(TotalMonies)
 print(CalculatedAverageChange)
