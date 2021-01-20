@@ -37,4 +37,17 @@ with open(csvpath) as csvfile:
     
     for votes in countedVotes.values():
         totalVotes = totalVotes + int(votes)
-    print(totalVotes)
+    # print(totalVotes)
+    # proper syntax
+    # https://realpython.com/iterate-through-dictionary-python/
+    # Accessed 20 January 2021
+
+    # candidate1 = "Khan"
+    # candidate2 = "Correy"
+    # candidate3 = "Li"
+    # candidate4 = "O'Tooley"
+
+
+    candidate1Votes = countedVotes["Khan"]
+    
+    print(candidate1Votes)
