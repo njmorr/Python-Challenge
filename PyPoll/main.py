@@ -26,7 +26,7 @@ with open(csvpath) as csvfile:
         else:
             countedVotes[vote] = countedVotes[vote] + 1
 
-    print(countedVotes)
+    #print(countedVotes)
     # Using dictionaries as a counter
     # Severance, C., Andrion, A., Hauser, E., & Blumenberg, S. 
     # (2016). Python for Everybody: Exploring Data in Python 3. Self-Published.
@@ -42,12 +42,28 @@ with open(csvpath) as csvfile:
     # https://realpython.com/iterate-through-dictionary-python/
     # Accessed 20 January 2021
 
-    # candidate1 = "Khan"
-    # candidate2 = "Correy"
-    # candidate3 = "Li"
-    # candidate4 = "O'Tooley"
+    candidate1 = "Khan"
+    candidate2 = "Correy"
+    candidate3 = "Li"
+    candidate4 = "O'Tooley"
 
 
     candidate1Votes = countedVotes["Khan"]
-    
-    print(candidate1Votes)
+    candidate2Votes = countedVotes["Correy"]
+    candidate3Votes = countedVotes["Li"]
+    candidate4Votes = countedVotes["O'Tooley"]
+
+    candidate1Percent = round(candidate1Votes/totalVotes*100, 4)
+    candidate2Percent = countedVotes["Correy"]
+    candidate3Percent = countedVotes["Li"]
+    candidate4Percent = countedVotes["O'Tooley"]
+
+
+    print("Election Results")
+    print ("---------------------------------")
+    print(f'Total Votes: {totalVotes}')
+    print ("---------------------------------")
+    print(f'{candidate1}: {candidate1Percent}% ({candidate1Votes})')
+    print(candidate2Votes)
+    print(candidate3Votes)
+    print(candidate4Votes)
