@@ -54,9 +54,9 @@ with open(csvpath) as csvfile:
     candidate4Votes = countedVotes["O'Tooley"]
 
     candidate1Percent = round(candidate1Votes/totalVotes*100, 4)
-    candidate2Percent = countedVotes["Correy"]
-    candidate3Percent = countedVotes["Li"]
-    candidate4Percent = countedVotes["O'Tooley"]
+    candidate2Percent = round(candidate2Votes/totalVotes*100, 4)
+    candidate3Percent = round(candidate3Votes/totalVotes*100, 4)
+    candidate4Percent = round(candidate4Votes/totalVotes*100, 4)
 
 
     print("Election Results")
@@ -64,6 +64,7 @@ with open(csvpath) as csvfile:
     print(f'Total Votes: {totalVotes}')
     print ("---------------------------------")
     print(f'{candidate1}: {candidate1Percent}% ({candidate1Votes})')
-    print(candidate2Votes)
-    print(candidate3Votes)
-    print(candidate4Votes)
+    print(f'{candidate2}: {candidate2Percent}% ({candidate2Votes})')
+    print(f'{candidate3}: {candidate3Percent}% ({candidate3Votes})')
+    print(f'{candidate4}: {candidate4Percent}% ({candidate4Votes})')
+    print ("---------------------------------")
