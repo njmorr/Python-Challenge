@@ -70,14 +70,35 @@ with open(csvpath) as csvfile:
     candidate4Percent = round(candidate4Votes/totalVotes*100, 4)
 
 
-    print("Election Results")
-    print ("---------------------------------")
-    print(f'Total Votes: {totalVotes}')
-    print ("---------------------------------")
-    print(f'{candidate1}: {candidate1Percent}% ({candidate1Votes})')
-    print(f'{candidate2}: {candidate2Percent}% ({candidate2Votes})')
-    print(f'{candidate3}: {candidate3Percent}% ({candidate3Votes})')
-    print(f'{candidate4}: {candidate4Percent}% ({candidate4Votes})')
-    print ("---------------------------------")
-    print(f'Winner: {winner}')
-    print ("---------------------------------")
+    title = "Election Results"
+    line = "-----------------------------"
+    allVotes = f'Total Votes: {totalVotes}'
+
+    candidate1Results = f'{candidate1}: {candidate1Percent}% ({candidate1Votes})'
+    candidate2Results = f'{candidate2}: {candidate2Percent}% ({candidate2Votes})'
+    candidate3Results = f'{candidate3}: {candidate3Percent}% ({candidate3Votes})'
+    candidate4Results = f'{candidate4}: {candidate4Percent}% ({candidate4Votes})'
+    
+    WinnerWinner = f'Winner: {winner}'
+
+    # Printing results:    
+    print(title)
+    print (line)
+    print(allVotes)
+    print (line)
+    print(candidate1Results)
+    print(candidate2Results)
+    print(candidate3Results)
+    print(candidate4Results)
+    print (line)
+    print(WinnerWinner)
+    print (line) 
+
+# write to .csv
+output_path = os.path.join("analysis", "election_analysis.csv")
+
+with open(output_path, 'w', newline='\n') as csvfile:
+    csvwriter = csv.writer(csvfile, delimiter = ',')
+    csvwriter.writerows([title, line, allVotes, line, 
+    candidate1Results, candidate2Results, candidate3Results, 
+    candidate4Results, line, WinnerWinner, line])
