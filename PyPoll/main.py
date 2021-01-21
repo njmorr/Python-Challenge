@@ -34,14 +34,25 @@ with open(csvpath) as csvfile:
 
     # Sum all the votes (keys) in dictionary
     totalVotes = 0
-    
+    mostVotes = 0
     for votes in countedVotes.values():
         totalVotes = totalVotes + int(votes)
     # print(totalVotes)
     # proper syntax
     # https://realpython.com/iterate-through-dictionary-python/
     # Accessed 20 January 2021
-
+    
+    # finding a winner
+    for candidate in countedVotes:
+        if countedVotes[candidate] > mostVotes:
+            mostVotes = countedVotes[candidate]
+            winner = candidate
+    #print(winner)
+    # traversing dictionaries and storing keys and values
+    # Severance, C., Andrion, A., Hauser, E., & Blumenberg, S. 
+    # (2016). Python for Everybody: Exploring Data in Python 3. Self-Published.
+    # Page 112
+    
     candidate1 = "Khan"
     candidate2 = "Correy"
     candidate3 = "Li"
@@ -67,4 +78,6 @@ with open(csvpath) as csvfile:
     print(f'{candidate2}: {candidate2Percent}% ({candidate2Votes})')
     print(f'{candidate3}: {candidate3Percent}% ({candidate3Votes})')
     print(f'{candidate4}: {candidate4Percent}% ({candidate4Votes})')
+    print ("---------------------------------")
+    print(f'Winner: {winner}')
     print ("---------------------------------")
