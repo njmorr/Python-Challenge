@@ -64,11 +64,13 @@ with open(csvpath) as csvfile:
     candidate3Votes = countedVotes["Li"]
     candidate4Votes = countedVotes["O'Tooley"]
 
-    candidate1Percent = round(candidate1Votes/totalVotes*100, 4)
-    candidate2Percent = round(candidate2Votes/totalVotes*100, 4)
-    candidate3Percent = round(candidate3Votes/totalVotes*100, 4)
-    candidate4Percent = round(candidate4Votes/totalVotes*100, 4)
-
+    candidate1Percent = format(candidate1Votes/totalVotes*100, '.3f')
+    candidate2Percent = format(candidate2Votes/totalVotes*100, '.3f')
+    candidate3Percent = format(candidate3Votes/totalVotes*100, '.3f')
+    candidate4Percent = format(candidate4Votes/totalVotes*100, '.3f')
+    # formatting the decimal
+    # https://stackoverflow.com/questions/455612/limiting-floats-to-two-decimal-points
+    # Accessed 20 January 2021
 
     title = "Election Results"
     line = "-----------------------------"
