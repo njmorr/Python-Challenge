@@ -93,7 +93,8 @@ with open(csvpath) as csvfile:
     # print(greastestDecreaseMonth)
     # print(greastestDecreasePNL)
 
-
+Title = "Financial Analyis"
+Line = "---------------------------------"
 TotalMonths = f'Total Months: {sumOfMonth}'
 
 TotalMonies = f'Total: ${total}'
@@ -105,22 +106,22 @@ CalculatedAverageChange = f'Average Change: {averageChange}'
 GreatestIncrease = f'Greatest Increase in Profits: {greastestIncreaseMonth} (${greastestIncreasePNL})'
 GreatestDecrease = f'Greatest Decrease in Profits: {greastestDecreaseMonth} (${greastestDecreasePNL})'
 
-print("Financial Analyis")
-print ("---------------------------------")
+print(Title)
+print (Line)
 print(TotalMonths)
 print(TotalMonies)
 print(CalculatedAverageChange)
 print(GreatestIncrease)
 print(GreatestDecrease)
 
-dataSummary = [TotalMonths, TotalMonies, CalculatedAverageChange, GreatestIncrease, GreatestDecrease]
+dataSummary = [Title, Line, TotalMonths, TotalMonies, CalculatedAverageChange, GreatestIncrease, GreatestDecrease]
 
-#print(dataSummary)
+# print(dataSummary)
 
 #create and save the output file
 output_file = os.path.join("analysis", "financial_analysis.csv")
 
-with open(output_file, "w") as datafile:
+with open(output_file, "w", newline='') as datafile:
     writer = csv.writer(datafile, delimiter='\t')
     writer.writerows(dataSummary)
 # Use of delimiter parameter

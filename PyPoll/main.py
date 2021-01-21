@@ -99,7 +99,7 @@ with open(csvpath) as csvfile:
 # write to .csv
 output_path = os.path.join("analysis", "election_analysis.csv")
 
-with open(output_path, 'w', newline='\n') as csvfile:
+with open(output_path, 'w', newline='') as csvfile:
     csvwriter = csv.writer(csvfile, delimiter = ',')
     csvwriter.writerows([title, line, allVotes, line, 
     candidate1Results, candidate2Results, candidate3Results, 
