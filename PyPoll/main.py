@@ -6,11 +6,15 @@ import csv
 
 csvpath = os.path.join('Resources','election_data.csv')
 
+
 votes = []
 countedVotes = dict()
 
-print("Election Results")
-print("-----------------------------")
+title = "Election Results"
+print(title)
+line = "-----------------------------"
+print(line)
+
 
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -41,33 +45,51 @@ with open(csvpath) as csvfile:
     for votes in countedVotes.values():
         totalVotes = totalVotes + int(votes)
     
-    print(f'Total Votes: {totalVotes}')
-    print("-----------------------------")
+    totaledVotes = f'Total Votes: {totalVotes}'
+    print(totaledVotes)
+    print(line)
+    
     # proper syntax
     # https://realpython.com/iterate-through-dictionary-python/
     # Accessed 20 January 2021
     
-
     
     # print(type(countedVotes))
     for key in countedVotes:
         print(f'{key}: {countedVotes[key]*100/totalVotes}% ({countedVotes[key]})')
 
-    print("-----------------------------")
+    print(line)
 
     # finding a winner
     for candidate in countedVotes:
         if countedVotes[candidate] > mostVotes:
             mostVotes = countedVotes[candidate]
             winner = candidate
-    print(f'Winner: {winner}')
-    print("-----------------------------")
+    
+    winnerWinner = f'Winner: {winner}'
+    print(winnerWinner)
+    print(line)
     # traversing dictionaries and storing keys and values
     # Severance, C., Andrion, A., Hauser, E., & Blumenberg, S. 
     # (2016). Python for Everybody: Exploring Data in Python 3. Self-Published.
     # Page 112
 
+# write to .csv
+output_path = os.path.join("analysis", "election_analysis.csv")
 
+with open(output_path, 'w') as datafile:
+    datafile.write(title + '\n')
+    datafile.write(line + '\n')
+    datafile.write(totaledVotes + '\n')
+    datafile.write(line + '\n')
+    datafile.write(title + '\n')
+    datafile.write(title + '\n')
+    datafile.write(title + '\n')
+    datafile.write(title + '\n')
+    datafile.write(line + '\n')
+    datafile.write(winnerWinner + '\n')
+    datafile.write(line + '\n')
+    
     # candidate1 = "Khan"
     # candidate2 = "Correy"
     # candidate3 = "Li"
