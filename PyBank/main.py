@@ -122,10 +122,7 @@ dataSummary = [Title, Line, TotalMonths, TotalMonies, CalculatedAverageChange, G
 output_file = os.path.join("analysis", "financial_analysis.csv")
 
 with open(output_file, "w", newline='') as datafile:
-    writer = csv.writer(datafile, delimiter='\t')
-    writer.writerows(dataSummary)
-# Use of delimiter parameter
-# https://stackoverflow.com/questions/51100680/python-list-to-csv-file-with-each-item-in-new-line
-# Accessed 19 Jan 2021
-# delimeter = '\t'
-# trial and error with random letters
+    writer = csv.writer(datafile, delimiter=',')
+    for i in range(len(dataSummary)):
+        writer.writerow(dataSummary[i])
+
