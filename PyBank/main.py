@@ -122,7 +122,12 @@ dataSummary = [Title, Line, TotalMonths, TotalMonies, CalculatedAverageChange, G
 output_file = os.path.join("analysis", "financial_analysis.csv")
 
 with open(output_file, "w", newline='') as datafile:
-    writer = csv.writer(datafile, delimiter=',')
-    for i in range(len(dataSummary)):
-        writer.writerow(dataSummary[i])
+    datafile.write(Title + '\n')
+    datafile.write(Line + '\n')
+    datafile.write(TotalMonths + '\n')
+    datafile.write(TotalMonies + '\n')
+    datafile.write(CalculatedAverageChange + '\n')
+    datafile.write(GreatestIncrease + '\n')
+    datafile.write(GreatestDecrease + '\n')
+
 
