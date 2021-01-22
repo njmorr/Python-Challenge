@@ -116,8 +116,6 @@ print(GreatestDecrease)
 
 dataSummary = [Title, Line, TotalMonths, TotalMonies, CalculatedAverageChange, GreatestIncrease, GreatestDecrease]
 
-# print(dataSummary)
-
 #create and save the output file
 output_file = os.path.join("analysis", "financial_analysis.csv")
 
