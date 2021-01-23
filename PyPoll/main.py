@@ -56,7 +56,8 @@ with open(csvpath) as csvfile:
     
     # print(type(countedVotes))
     for key in countedVotes:
-        print(f'{key}: {countedVotes[key]*100/totalVotes}% ({countedVotes[key]})')
+        print(f'{key}: {countedVotes[key]*100/totalVotes: .3f}% ({countedVotes[key]})')
+
 
     print(line)
 
