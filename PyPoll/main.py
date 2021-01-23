@@ -4,9 +4,6 @@ import os
 
 import csv
 
-csvpath = os.path.join('Resources','election_data.csv')
-
-
 votes = []
 countedVotes = dict()
 
@@ -15,6 +12,14 @@ print(title)
 line = "-----------------------------"
 print(line)
 
+# write to .csv
+output_path = os.path.join("analysis", "election_analysis.csv")
+
+with open(output_path, 'w') as datafile:
+    datafile.write(title + '\n')
+    datafile.write(line + '\n')
+
+csvpath = os.path.join('Resources','election_data.csv')
 
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -33,7 +38,6 @@ with open(csvpath) as csvfile:
         else:
             countedVotes[vote] = countedVotes[vote] + 1
 
-    # print(countedVotes)
     # Using dictionaries as a counter
     # Severance, C., Andrion, A., Hauser, E., & Blumenberg, S. 
     # (2016). Python for Everybody: Exploring Data in Python 3. Self-Published.
@@ -44,101 +48,44 @@ with open(csvpath) as csvfile:
     mostVotes = 0
     for votes in countedVotes.values():
         totalVotes = totalVotes + int(votes)
+        # proper syntax
+        # https://realpython.com/iterate-through-dictionary-python/
+        # Accessed 20 January 2021
     
     totaledVotes = f'Total Votes: {totalVotes}'
     print(totaledVotes)
     print(line)
+    with open(output_path, 'a') as datafile:
+        datafile.write(totaledVotes + '\n')
+        datafile.write(line + '\n')
+    # Appending a file, and not writing over previous work
+    # https://stackoverflow.com/questions/13203868/how-to-write-to-csv-and-not-overwrite-past-text
+    # Accessed 22 Jan 2021    
     
-    # proper syntax
-    # https://realpython.com/iterate-through-dictionary-python/
-    # Accessed 20 January 2021
-    
-    
-    # print(type(countedVotes))
     for key in countedVotes:
-        print(f'{key}: {countedVotes[key]*100/totalVotes: .3f}% ({countedVotes[key]})')
-
-
-    print(line)
+        candidateStats = f'{key}: {countedVotes[key]*100/totalVotes: .3f}% ({countedVotes[key]})'
+        print(candidateStats)
+        # formatting the decimals
+        # https://thepythonguru.com/python-string-formatting/#:~:text=2f%20are%20called%20as%20format,the%20tuple%20i.e%2012%20and%20%25.
+        # Accessed 22 Jan 2021
+        with open(output_path, 'a') as datafile:
+            datafile.write(candidateStats + '\n')
 
     # finding a winner
     for candidate in countedVotes:
         if countedVotes[candidate] > mostVotes:
             mostVotes = countedVotes[candidate]
             winner = candidate
-    
-    winnerWinner = f'Winner: {winner}'
-    print(winnerWinner)
-    print(line)
     # traversing dictionaries and storing keys and values
     # Severance, C., Andrion, A., Hauser, E., & Blumenberg, S. 
     # (2016). Python for Everybody: Exploring Data in Python 3. Self-Published.
-    # Page 112
+    # Page 112  
 
-# write to .csv
-output_path = os.path.join("analysis", "election_analysis.csv")
-
-with open(output_path, 'w') as datafile:
-    datafile.write(title + '\n')
-    datafile.write(line + '\n')
-    datafile.write(totaledVotes + '\n')
-    datafile.write(line + '\n')
-    datafile.write(title + '\n')
-    datafile.write(title + '\n')
-    datafile.write(title + '\n')
-    datafile.write(title + '\n')
-    datafile.write(line + '\n')
-    datafile.write(winnerWinner + '\n')
-    datafile.write(line + '\n')
-    
-    # candidate1 = "Khan"
-    # candidate2 = "Correy"
-    # candidate3 = "Li"
-    # candidate4 = "O'Tooley"
-
-
-    # candidate1Votes = countedVotes["Khan"]
-    # candidate2Votes = countedVotes["Correy"]
-    # candidate3Votes = countedVotes["Li"]
-    # candidate4Votes = countedVotes["O'Tooley"]
-
-    # candidate1Percent = format(candidate1Votes/totalVotes*100, '.3f')
-    # candidate2Percent = format(candidate2Votes/totalVotes*100, '.3f')
-    # candidate3Percent = format(candidate3Votes/totalVotes*100, '.3f')
-    # candidate4Percent = format(candidate4Votes/totalVotes*100, '.3f')
-    # # formatting the decimal
-    # # https://stackoverflow.com/questions/455612/limiting-floats-to-two-decimal-points
-    # # Accessed 20 January 2021
-
-    # title = "Election Results"
-    # line = "-----------------------------"
-    # allVotes = f'Total Votes: {totalVotes}'
-
-    # candidate1Results = f'{candidate1}: {candidate1Percent}% ({candidate1Votes})'
-    # candidate2Results = f'{candidate2}: {candidate2Percent}% ({candidate2Votes})'
-    # candidate3Results = f'{candidate3}: {candidate3Percent}% ({candidate3Votes})'
-    # candidate4Results = f'{candidate4}: {candidate4Percent}% ({candidate4Votes})'
-    
-    # WinnerWinner = f'Winner: {winner}'
-
-    # # Printing results:    
-    # print(title)
-    # print (line)
-    # print(allVotes)
-    # print (line)
-    # print(candidate1Results)
-    # print(candidate2Results)
-    # print(candidate3Results)
-    # print(candidate4Results)
-    # print (line)
-    # print(WinnerWinner)
-    # print (line) 
-
-# write to .csv
-# output_path = os.path.join("analysis", "election_analysis.csv")
-
-# with open(output_path, 'w', newline='') as csvfile:
-#     csvwriter = csv.writer(csvfile, delimiter = ',')
-#     csvwriter.writerows([title, line, allVotes, line, 
-#     candidate1Results, candidate2Results, candidate3Results, 
-#     candidate4Results, line, WinnerWinner, line])
+    winnerWinner = f'Winner: {winner}'
+    print(line)
+    print(winnerWinner)
+    print(line)
+    with open(output_path, 'a') as datafile:
+        datafile.write(line + '\n')
+        datafile.write(winnerWinner + '\n')
+        datafile.write(line + '\n')
